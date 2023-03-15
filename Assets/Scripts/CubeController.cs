@@ -9,6 +9,7 @@ public class CubeController : MonoBehaviour
     private Vector3 _axis;
     private bool _isMoving;
     private Rigidbody _rigidbody;
+    private bool _hadWallOnPreviousStep;
 
     private void Start()
     {
@@ -20,16 +21,19 @@ public class CubeController : MonoBehaviour
         if (_isMoving) return;
         
         var isGrounded = BlockChecker.CheckIsGrounded(transform.position);
-        if (!isGrounded)
+        if (!(isGrounded || _hadWallOnPreviousStep))
         {
             return;
         }
+
+        _hadWallOnPreviousStep = false;
         
         var verticalComponent = Vector3.down;
         var hasWall = BlockChecker.HasWallInDirection(transform.position, direction);
         if (hasWall)
         {
             verticalComponent = Vector3.up;
+            _hadWallOnPreviousStep = true;
         }
         
         _pivotPoint = (direction / 2f) + (verticalComponent / 2f) + transform.position;
