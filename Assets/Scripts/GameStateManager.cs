@@ -25,7 +25,7 @@ namespace DefaultNamespace
 
         private void Start()
         {
-            _player = FindObjectOfType<PlayerInput>().gameObject;
+            _player = FindObjectOfType<PlayerKeyboardInput>().gameObject;
         }
 
         public void Die()

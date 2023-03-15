@@ -1,21 +1,10 @@
+using DefaultNamespace.Inputs;
 using UnityEngine;
 
 [RequireComponent(typeof(CubeController))]
-public class PlayerInput : MonoBehaviour
+public class PlayerKeyboardInput : PlayerInputBase
 {
-    private CubeController _cubeController;
-
-    private void Start()
-    {
-        _cubeController = GetComponent<CubeController>();
-    }
-
-    private void Update()
-    {
-        ProcessInput();
-    }
-
-    private void ProcessInput()
+    protected override void ProcessInput()
     {
         if (Input.GetKey(KeyCode.A))
         {
