@@ -18848,25 +18848,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4562075604489022, guid: 1b8fbee291cdc1046a281cb2b3b51bf7, type: 3}
   m_PrefabInstance: {fileID: 1733852591}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1739359617 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7680632784991025914, guid: 3b4edef46d321452bbf98cadef889582, type: 3}
-  m_PrefabInstance: {fileID: 8614048590785203389}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1739359620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739359617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a91c610a4ba54b64a7957df81bf030c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentPlayerAmount: 400
-  _scoreDisplay: {fileID: 777229182}
 --- !u!1001 &1741778921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23897,6 +23878,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1739359620, guid: 3b4edef46d321452bbf98cadef889582, type: 3}
+      propertyPath: _scoreDisplay
+      value: 
+      objectReference: {fileID: 777229182}
+    - target: {fileID: 1739359621, guid: 3b4edef46d321452bbf98cadef889582, type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 910768331}
+    - target: {fileID: 1739359621, guid: 3b4edef46d321452bbf98cadef889582, type: 3}
+      propertyPath: _spread
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1739359621, guid: 3b4edef46d321452bbf98cadef889582, type: 3}
+      propertyPath: _coinPrefab
+      value: 
+      objectReference: {fileID: 5963843751858661781, guid: 9efd1d7933cd849e39029297c31dca83, type: 3}
+    - target: {fileID: 1739359621, guid: 3b4edef46d321452bbf98cadef889582, type: 3}
+      propertyPath: _scoreDisplay
+      value: 
+      objectReference: {fileID: 777229182}
     - target: {fileID: 7182129253176730136, guid: 3b4edef46d321452bbf98cadef889582, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -23944,10 +23945,6 @@ PrefabInstance:
     - target: {fileID: 7680632784991025914, guid: 3b4edef46d321452bbf98cadef889582, type: 3}
       propertyPath: m_Name
       value: MainController
-      objectReference: {fileID: 0}
-    - target: {fileID: 7680632784991025914, guid: 3b4edef46d321452bbf98cadef889582, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b4edef46d321452bbf98cadef889582, type: 3}
