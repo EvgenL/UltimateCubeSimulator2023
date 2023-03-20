@@ -1,27 +1,15 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class GameStateManager : MonoBehaviour
-    {
-        private static GameStateManager _instance;
-        // Singleton pattern
-        public static GameStateManager Instance => _instance;
+    // Generic
 
+    public class GameStateManager : SingletonMonoBehaviour<GameStateManager>
+    {
         private bool _isDead = false;
         private GameObject _player;
-
-        private void Awake()
-        {
-            if (_instance != null)
-            {
-                Destroy(_instance.gameObject);
-                return;
-            }
-            
-            _instance = this;
-        }
 
         private void Start()
         {

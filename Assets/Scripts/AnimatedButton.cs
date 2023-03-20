@@ -1,5 +1,7 @@
 using System;
 using DG.Tweening;
+using DG.Tweening.Core;
+using DG.Tweening.Plugins.Options;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,6 +15,8 @@ public class AnimatedButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [Header("Animation smothness type")]
     [SerializeField] private Ease _ease = Ease.InOutSine;
 
+    private TweenerCore<Vector3, Vector3, VectorOptions> tweener;
+
     private void Start()
     {
         _originalScale = transform.localScale;
@@ -21,11 +25,22 @@ public class AnimatedButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        transform.DOScale(_scaleTo, _duraction).SetEase(_ease);
+        tweener = transform.DOScale(_scaleTo, _duraction).SetEase(_ease);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        transform.DOScale(_originalScale, _duraction).SetEase(_ease);
+        tweener = transform.DOScale(_originalScale, _duraction).SetEase(_ease);
+    }
+
+    [ContextMenu("Stop animation")]
+    public void Stop()
+    {
+        tweener.Pause();
+    }
+    [ContextMenu("Play animation")]
+    public void Play()
+    {
+        tweener.Play();
     }
 }
