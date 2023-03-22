@@ -22,7 +22,18 @@ namespace DefaultNamespace
         // Анимируем анимации из кода
         private void Update()
         {
+            // var ob = FindObjectOfType<PickUp>(); // НЕЛЬЗЯ
+            
+            // МОЖНО, называется кеширование
+            if (_ob == null)
+            {
+                _ob = FindObjectOfType<PickUp>();
+            }
+            Debug.Log(_ob);
         }
+
+        private PickUp _ob;
+        
 
         // Физический апдейт
         // по умолчанию 50 раз в секунду
