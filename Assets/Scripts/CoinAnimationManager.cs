@@ -1,3 +1,4 @@
+using System.IO;
 using DefaultNamespace.Ui;
 using DG.Tweening;
 using UnityEngine;
@@ -34,7 +35,6 @@ namespace DefaultNamespace
                 Random.Range(-_spread, _spread),
                 Random.Range(-_spread, _spread)
             );
-            
             coin.transform.position = startScreenPosition;
             
             coin.transform.localScale = Vector3.zero;
