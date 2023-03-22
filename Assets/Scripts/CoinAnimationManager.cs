@@ -1,4 +1,5 @@
 using System.IO;
+using Cysharp.Threading.Tasks;
 using DefaultNamespace.Ui;
 using DG.Tweening;
 using UnityEngine;
@@ -38,20 +39,37 @@ namespace DefaultNamespace
             coin.transform.position = startScreenPosition;
             
             coin.transform.localScale = Vector3.zero;
-            coin.transform.DOScale(Vector3.one, _animationDuration).OnComplete(
-                () => 
-                    coin.transform.DOMove(targetScreenPosition, _animationDuration)
-                        .OnComplete(() => Destroy(coin.gameObject)));
+            
+            // 1 Последовательность анимаций через стрелочную функцию (лямбда функцию)
+            // coin.transform.DOScale(Vector3.one, _animationDuration).OnComplete(
+            //     () => 
+            //         coin.transform.DOMove(targetScreenPosition, _animationDuration)
+            //             .OnComplete(() => Destroy(coin.gameObject)));
+            
+            // 2 через Sequence
+            var sequence = DOTween.Sequence();
+            sequence.Append(coin.transform.DOScale(Vector3.one, _animationDuration));
+            sequence.Append(coin.transform.DOMove(targetScreenPosition, _animationDuration));
+            sequence.OnComplete(() => Destroy(coin.gameObject));
+            
+            // 3 самодельная анимация
+            // AnimateTask(coin.transform, targetScreenPosition, _animationDuration);
         }
 
-        // private async void AnimateTask(Transform animatedTransform, 
-        //     Vector3 startPos,
-        //     Vector3 endPos)
+        // private async void AnimateTask(Transform animatedTransform, Vector3 endPos, float animationDuration)
         // {
-        //     var direction = startPos - endPos;
-        //     var step = direction;
-        //     
-        //     
+        //     var startPos = animatedTransform.position;
+        //
+        //     var step = 1f / animationDuration;
+        //
+        //     // Идём от 0 до 1 на протяжении "animationDuration" секунд
+        //     for (float t = 0f; t <= 1f; t += step * Time.deltaTime)
+        //     {
+        //         var middlePosition = Vector3.Lerp(startPos, endPos, t);
+        //         animatedTransform.position = middlePosition;
+        //         
+        //         await UniTask.WaitForEndOfFrame();
+        //     }
         // }
     }
 }
